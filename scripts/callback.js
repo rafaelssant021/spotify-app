@@ -1,5 +1,5 @@
 const CLIENT_ID = '4f6124ce11ce4ce3b36f0daca131fd56';
-const REDIRECT_URI = window.location.origin + '/callback.html';
+const REDIRECT_URI = window.location.origin + '/spotify-app/callback.html';
 
 async function handleCallback(){
     const params = new URLSearchParams(window.location.search);
@@ -15,13 +15,13 @@ async function handleCallback(){
     }
 
     if(!code){
-        window.location.href = '/index.html';
+        window.location.href = '/spotify-app/index.html';
         return;
     }
 
     const verifier = localStorage.getItem('pkce_verifier');
     if(!verifier){
-        window.location.href = '/index.html';
+        window.location.href = '/spotify-app/index.html';
         return;
     }
     
@@ -46,7 +46,7 @@ async function handleCallback(){
             localStorage.setItem('spotify_token', data.access_token);
             localStorage.setItem('token_expires', Date.now() + data.expires_in * 1000);
             localStorage.removeItem('pkce_verifier');
-            window.location.href = '/index.html';
+            window.location.href = '/spotify-app/index.html';
         } else {
             throw new Error(data.error_description || 'Erro desconhecido');
         }
