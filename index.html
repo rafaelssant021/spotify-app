@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meu perfil musical</title>
+    <link rel="stylesheet" href="estilos/login-style.css">
+    <link rel="stylesheet" href="estilos/app-style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+</head>
+<body>
+    <div id="login-screen">
+        <div class="login-logo">Meu Perfil Musical</div>
+        <h1 class="login-headline">Seu som,<br><span>revelado.</span></h1>
+        <p class="login-sub">Veja seus artistas e músicas favoritas, gêneros que você mais ouve e muito mais - direto do Spotify.</p>
+        <button class="btn-login" onclick="startLogin()">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm4.586 14.424a.622.622 0 01-.857.207c-2.348-1.435-5.304-1.76-8.785-.964a.623.623 0 01-.277-1.215c3.809-.87 7.076-.496 9.712 1.115a.623.623 0 01.207.857zm1.223-2.722a.779.779 0 01-1.072.257c-2.687-1.652-6.786-2.131-9.965-1.166a.778.778 0 01-.966-.519.779.779 0 01.519-.966c3.632-1.102 8.147-.568 11.228 1.322a.779.779 0 01.256 1.072zm.105-2.835C14.692 8.95 9.375 8.775 6.297 9.71a.935.935 0 11-.543-1.79c3.532-1.072 9.404-.865 13.115 1.338a.935.935 0 01-.955 1.609z"/></svg>
+            Entrar com Spotify
+        </button>
+    </div>
+
+    <div id="loading">
+        <div class="spinner"></div>
+        <p class="loading-text" id="loading-text">Carregando seus dados...</p>
+    </div>
+
+    <div id="app">
+        <header>
+            <div class="header-brand">Meu perfil musical</div>
+            <div style="display: flex; align-items: center; gap: 10px;">
+                <div class="user-chip">
+                    <div class="user-avatar" id="user-avatar-wrap">?</div>
+                    <span class="user-name" id="user-avatar-label">...</span>
+                </div>
+                <button class="btn-logout" onclick="logout()">Sair</button>
+            </div>
+        </header>
+
+        <main>
+            <div class="tabs">
+                <button class="tab active" onclick="switchRange('short_term', this)">Ultimo mês</button>
+                <button class="tab" onclick="switchRange('medium_term', this)">6 meses</button>
+                <button class="tab" onclick="switchRange('long_term', this)">Todos os tempos</button>
+            </div>
+
+            <div class="stats-grid" id="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-label">Artistas únicos</div>
+                    <div class="stat-value" id="stat-artists">-</div>
+                    <div class="stat-sub">no seu top</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-label">Músicas únicas</div>
+                    <div class="stat-value" id="stat-tracks">-</div>
+                    <div class="stat-sub">mais tocadas</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-label">Artista frequente</div>
+                    <div class="stat-value" style="font-size: 1.1rem; margin-top: 4px;" id="stat-genre">-</div>
+                    <div class="stat-sub">mais ouvidos</div>
+                </div>
+            </div>
+
+            <div class="section fade-in">
+                <div class="section-header">
+                    <h2 class="section-title">Top músicas</h2>
+                    <span class="section-count" id="tracks-count"></span>
+                </div>
+                <div class="track-list" id="track-list"></div>
+            </div>
+
+            <div class="section fade-in">
+                <div class="section-header">
+                    <h2 class="section-title">Artistas nas suas músicas</h2>
+                </div>
+                <div class="genre-list" id="genre-list"></div>
+            </div>
+
+            <div class="section fade-in">
+                <div class="section-header">
+                    <h2 class="section-title">Top artistas</h2>
+                    <span class="section-count" id="artist-count"></span>
+                </div>
+                <div class="artist-grid" id="artist-grid"></div>
+            </div>
+
+            <div class="section fade-in">
+                <div class="section-header">
+                    <h2 class="section-title">Tocadas recentemente</h2>
+                </div>
+                <div class="recent-list" id="recent-list"></div>
+            </div>
+        </main>
+    </div>
+
+    <script src="scripts/script.js"></script>
+</body>
+</html>
