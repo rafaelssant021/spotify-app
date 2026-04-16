@@ -1,5 +1,5 @@
 const CLIENT_ID = '4f6124ce11ce4ce3b36f0daca131fd56';
-const REDIRECT_URI = window.location.origin + '/callback.html';
+const REDIRECT_URI = window.location.origin + '/spotify-app/callback.html';
 const SCOPES = [
     'user-top-read',
     'user-read-recently-played',
