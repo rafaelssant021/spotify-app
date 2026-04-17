@@ -25,7 +25,6 @@ async function startLogin(){
     const verifier = generateCodeVerifier();
     const challenge = await generateCodeChallenge(verifier);
     localStorage.setItem('pkce_verifier', verifier);
-    console.log('verifier gerado', verifier);
 
     const params = new URLSearchParams({
         response_type: 'code',

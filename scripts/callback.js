@@ -6,9 +6,6 @@ async function handleCallback(){
     const code = params.get('code');
     const error = params.get('error');
 
-    console.log('code recebido:', code);
-    console.log('verifier recebido:', localStorage.getItem('pkce_verifier'));
-
     if(error){
         document.getElementById('spinner').style.display = 'none';
         document.getElementById('msg').className = 'error';
@@ -24,7 +21,7 @@ async function handleCallback(){
 
     const verifier = localStorage.getItem('pkce_verifier');
     if(!verifier){
-        window.location.href = '/index.html';
+        window.location.href = '/spotify-app/index.html';
         return;
     }
     
@@ -49,7 +46,7 @@ async function handleCallback(){
             localStorage.setItem('spotify_token', data.access_token);
             localStorage.setItem('token_expires', Date.now() + data.expires_in * 1000);
             localStorage.removeItem('pkce_verifier');
-            window.location.href = '/index.html';
+            window.location.href = '/spotify-app/index.html';
         } else {
             throw new Error(data.error_description || 'Erro desconhecido');
         }
