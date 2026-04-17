@@ -3,7 +3,7 @@
 Uma dashboard interativa que revela seus hábitos musicais com dados reais da API do Spotify.
 Visualize suas músicas, artistas e padrões de escuta com uma interface inspirada no próprio Spotify.
 
-Acesse: https://rafaelssant021.github.io/spotify-app/
+Acesse: https://spotify-app-inky.vercel.app/
 
 ---
 
