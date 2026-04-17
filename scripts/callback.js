@@ -6,11 +6,14 @@ async function handleCallback(){
     const code = params.get('code');
     const error = params.get('error');
 
+    console.log('code recebido:', code);
+    console.log('verifier recebido:', localStorage.getItem('pkce_verifier'));
+
     if(error){
         document.getElementById('spinner').style.display = 'none';
         document.getElementById('msg').className = 'error';
         document.getElementById('msg').textContent = 'Acesso negado. Volte e tente novamente';
-        setTimeout(() => window.location.href = '/spotify-app/index.html', 3000);
+        setTimeout(() => window.location.href = '/', 3000);
         return;
     }
 
@@ -19,7 +22,7 @@ async function handleCallback(){
         return;
     }
 
-    const verifier = sessionStorage.getItem('pkce_verifier');
+    const verifier = localStorage.getItem('pkce_verifier');
     if(!verifier){
         window.location.href = '/spotify-app/index.html';
         return;
@@ -43,9 +46,9 @@ async function handleCallback(){
         const data = await res.json();
 
         if(data.access_token){
-            sessionStorage.setItem('spotify_token', data.access_token);
-            sessionStorage.setItem('token_expires', Date.now() + data.expires_in * 1000);
-            sessionStorage.removeItem('pkce_verifier');
+            localStorage.setItem('spotify_token', data.access_token);
+            localStorage.setItem('token_expires', Date.now() + data.expires_in * 1000);
+            localStorage.removeItem('pkce_verifier');
             window.location.href = '/spotify-app/index.html';
         } else {
             throw new Error(data.error_description || 'Erro desconhecido');
@@ -54,7 +57,7 @@ async function handleCallback(){
         document.getElementById('spinner').style.display = 'none';
         document.getElementById('msg').className = 'error';
         document.getElementById('msg').textContent = 'Erro ao autenticar: ' + err.message;
-        setTimeout(() => window.location.href = '/spotify-app/index.html', 4000);
+        setTimeout(() => window.location.href = '/', 4000);
     }
 }
 

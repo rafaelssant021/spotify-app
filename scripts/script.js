@@ -24,7 +24,8 @@ async function generateCodeChallenge(verifier){
 async function startLogin(){
     const verifier = generateCodeVerifier();
     const challenge = await generateCodeChallenge(verifier);
-    sessionStorage.setItem('pkce_verifier', verifier);
+    localStorage.setItem('pkce_verifier', verifier);
+    console.log('verifier gerado', verifier);
 
     const params = new URLSearchParams({
         response_type: 'code',
@@ -39,7 +40,7 @@ async function startLogin(){
 }
 
 async function exchangeCode(code){
-    const verifier = sessionStorage.getItem('pkce_verifier');
+    const verifier = localStorage.getItem('pkce_verifier');
     const body = new URLSearchParams({
         grant_type: 'authorization_code',
         code: code,
