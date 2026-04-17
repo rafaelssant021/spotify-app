@@ -3,14 +3,39 @@
 Uma dashboard interativa que revela seus hábitos musicais com dados reais da API do Spotify.
 Visualize suas músicas, artistas e padrões de escuta com uma interface inspirada no próprio Spotify.
 
+![Status Concluído](https://img.shields.io/badge/STATUS-CONCLU%C3%8DDO-brightgreen)
+
 Acesse: https://spotify-app-inky.vercel.app/
 
 ---
 
+## Demonstração:
+
+### Login:
+<div align="center">
+  <img src="https://github.com/user-attachments/assets/992623e3-87b8-4ec3-9aee-61deb53f54c8" width="100%" alt="Spotify App Demo">
+</div>
+
+### Dashboard:
+<div align="center">
+  <img src="https://github.com/user-attachments/assets/97ee92b9-54a0-405d-956b-47d937d4e6da"
+width="100%" alt="Spotify App Demo">
+</div>
+
+<div align="center">
+  <img src="https://github.com/user-attachments/assets/82c45755-f48c-4581-83c0-20984639b7d1"
+width="100%" alt="Spotify App Demo">
+</div>
+
+<div align="center">
+  <img src="https://github.com/user-attachments/assets/f079a484-83a1-4f57-b38e-8102e27c53b9"
+width="100%" alt="Spotify App Demo">
+</div>
+
 ## Funcionalidades
 
 - Login com Spotify (OAuth PKCE)
-- Top músicas:
+- Top músicas
 - Último mês
 - Últimos 6 meses
 - Todo o período
