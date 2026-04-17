@@ -43,8 +43,8 @@ async function handleCallback(){
         const data = await res.json();
 
         if(data.access_token){
-            localStorage.setItem('spotify_token', data.access_token);
-            localStorage.setItem('token_expires', Date.now() + data.expires_in * 1000);
+            sessionStorage.setItem('spotify_token', data.access_token);
+            sessionStorage.setItem('token_expires', Date.now() + data.expires_in * 1000);
             sessionStorage.removeItem('pkce_verifier');
             window.location.href = '/spotify-app/index.html';
         } else {
