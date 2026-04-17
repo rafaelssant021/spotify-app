@@ -32,6 +32,8 @@ width="100%" alt="Spotify App Demo">
 width="100%" alt="Spotify App Demo">
 </div>
 
+---
+
 ## Funcionalidades
 
 - Login com Spotify (OAuth PKCE)
