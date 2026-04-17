@@ -50,6 +50,31 @@ O projeto utiliza o fluxo Authorization Code com PKCE, garantindo:
 
 ---
 
+## Como rodar localmente
+- clone o projeto
+git clone https://github.com/rafaelssant021/spotify-app.git
+
+- entre na pasta
+cd spotify-app
+
+- rode com live server ou similar
+
+Exemplo com Live Server (VS Code):
+
+http://127.0.0.1:5500
+
+---
+
+## Configuração obrigatória
+
+No dashboard do Spotify, configure:
+
+Redirect URIs:
+http://127.0.0.1:5500/callback.html
+https://rafaelssant021.github.io/spotify-app/callback.html
+
+Sem isso, o login não funciona.
+
 ## Sobre o projeto
 
 Esse projeto foi construído com foco em:
