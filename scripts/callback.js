@@ -4,6 +4,7 @@ const REDIRECT_URI = window.location.origin + '/callback.html';
 async function handleCallback(){
     const params = new URLSearchParams(window.location.search);
     const code = params.get('code');
+    const verifier = params.get('state');
     const error = params.get('error');
 
     if(error){
@@ -19,7 +20,7 @@ async function handleCallback(){
         return;
     }
 
-    const verifier = localStorage.getItem('pkce_verifier');
+    
     if(!verifier){
         window.location.href = '/index.html';
         return;
@@ -45,7 +46,6 @@ async function handleCallback(){
         if(data.access_token){
             localStorage.setItem('spotify_token', data.access_token);
             localStorage.setItem('token_expires', Date.now() + data.expires_in * 1000);
-            localStorage.removeItem('pkce_verifier');
             window.location.href = '/index.html';
         } else {
             throw new Error(data.error_description || 'Erro desconhecido');

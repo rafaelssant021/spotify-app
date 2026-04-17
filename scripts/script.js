@@ -24,7 +24,6 @@ async function generateCodeChallenge(verifier){
 async function startLogin(){
     const verifier = generateCodeVerifier();
     const challenge = await generateCodeChallenge(verifier);
-    localStorage.setItem('pkce_verifier', verifier);
 
     const params = new URLSearchParams({
         response_type: 'code',
@@ -33,36 +32,13 @@ async function startLogin(){
         redirect_uri: REDIRECT_URI,
         code_challenge_method: 'S256',
         code_challenge: challenge,
+        state: verifier
     });
 
     window.location.href = 'https://accounts.spotify.com/authorize?' + params;
 }
 
-async function exchangeCode(code){
-    const verifier = localStorage.getItem('pkce_verifier');
-    const body = new URLSearchParams({
-        grant_type: 'authorization_code',
-        code: code,
-        redirect_uri: REDIRECT_URI,
-        client_id: CLIENT_ID,
-        code_verifier: verifier,
-    });
 
-    const res = await fetch('https://accounts.spotify.com/api/token', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded'},
-        body: body,
-    });
-
-    const data = await res.json();
-    if (data.access_token){
-        localStorage.setItem('spotify_token', data.access_token);
-        localStorage.setItem('token_expires', Date.now() + data.expires_in * 1000);
-        localStorage.removeItem('pkce_verifier');
-        return data.access_token;
-    }
-    throw new Error('falha ao obter token: ' + JSON.stringify(data));
-}
 
 function getToken(){
     const token = localStorage.getItem('spotify_token');
